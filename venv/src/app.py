@@ -1,5 +1,5 @@
 from flask import Flask, render_template, json, request
-from flask.ext.mysql import MySQL
+from flaskext.mysql import MySQL
 from werkzeug import generate_password_hash, check_password_hash
 
 mysql = MySQL()
@@ -18,10 +18,19 @@ def main():
     return render_template('index.html')
 
 
+@app.route('/home')
+def home():
+    return render_template('index.html')
+
+
 @app.route('/showSignUp')
 def showSignUp():
     return render_template('signup.html')
 
+
+@app.route('/showSignIn')
+def showSignIn():
+    return render_template('signin.html')
 
 @app.route('/signUp', methods=['POST', 'GET'])
 def signUp():
